@@ -267,10 +267,6 @@ function getQueries(){
 		}).catch(function(result){
 			alert("Oops. Bad response. :(");
 		});
-	
-	while (responseBody === null){
-	  console.log("empty response");
-	}
 		
 	setTimeout(function () {
   	var bucketURL = "https://pa-b2.s3.amazonaws.com/";
