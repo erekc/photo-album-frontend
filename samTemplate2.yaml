@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Sam for frontend
+Resources:
+    WebsiteBucket:
+        Type: AWS::S3::Bucket
+        Properties:
+            Bucketname: ai-photo-album2.com
+            PublicAccessBlockConfiguration:
+                BlockPublicAcls: FALSE
+                BlockPublicPolicy: FALSE
+                IgnorePublicAcls: FALSE
+                RestrictPublicBuckets: FALSE
+            WebsiteConfiguration:
+                IndexDocument: pa-2-index.html
+    WebsiteBucketPolicy:
+        Type: AWS::S3::BucketPolicy
+        Properties:
+            Bucket: !Ref WebsiteBucket
+            PolicyDocument:
+                Version: 2012-10-17
+                Statement:
+                    -   Action:
+                            - '*'
+                        Effect: Allow
+                        Resource: !Sub
+                            -   arn:aws:s3:::${PhotoBucket}/*
+                            -   { PhotoBucket: !Ref WebsiteBucket }
+                        Principal: '*'
+                        Sid: PublicReadGetObject
+    
+                        
+                        
+                    
