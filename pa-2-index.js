@@ -279,16 +279,17 @@ function getQueries(){
       	  if (i === 0){
       	    gridMeat += rowBegin;
       	  }
-      	  else{ 
-      	    if (i % 4 === 0){
-      	      gridMeat += rowEnd;
-      	      if (i != responseBody.length - 1){
-      	        gridMeat += rowBegin;
-      	      }
-      	    }
-      	    var image = "<img src=\"" + bucketURL + photo + "\"style=\"height: 200px; width: 200px;\">";
-      	    gridMeat += colBegin + image + colEnd;
-      	  }
+    	    if (i % 4 === 0 && i != 0){
+    	      gridMeat += rowEnd;
+    	      if (i != responseBody.length - 1){
+    	        gridMeat += rowBegin;
+    	      }
+    	    }
+    	    var image = "<img src=\"" + bucketURL + photo + "\"style=\"height: 200px; width: 200px;\">";
+    	    gridMeat += colBegin + image + colEnd;
+    	    if (i % 4 != 0 && i == responseBody.length - 1){
+    	      gridMeat += rowEnd;
+    	    }
       	}
     	}
     	
