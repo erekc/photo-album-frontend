@@ -28,7 +28,34 @@ Resources:
                             -   { PhotoBucket: !Ref WebsiteBucket }
                         Principal: '*'
                         Sid: PublicReadGetObject
-    
-                        
-                        
-                    
+    WebsiteCloudFront:
+        Type: AWS::CloudFront::Distribution
+        Properties:
+            DistributionConfig:
+                Comment: CloudFront for Photo Album
+                CacheBehaviors:
+                    -   AllowedMethods:
+                            -   GET
+                            -   HEAD
+                        CachedMethods:
+                            -   GET
+                            -   HEAD
+                        Compress: FALSE
+                        DefaultTTL: 86400
+                        MaxTTL: 31536000
+                        MinTTL: 0
+                        PathPattern: '*'
+                        SmoothStreaming: FALSE
+                        TargetOriginId: S3-ai-photo-album2.com
+                        ViewerProtocolPolicy: redirect-to-https
+                DefaultRootObject: pa-2-index.html
+                Enabled: TRUE
+                HttpVersion: http2
+                IPV6Enabled: TRUE
+                Origins:
+                    -   DomainName: ai-photo-album.com.s3.amazonaws.com
+                        Id: S3-ai-photo-album.com
+                        CustomOriginConfig:
+                            OriginProtocolPolicy: http-only
+                ViewerCertificate:
+                    CloudFrontDefaultCertificate: TRUE
