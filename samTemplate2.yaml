@@ -30,6 +30,7 @@ Resources:
                         Sid: PublicReadGetObject
     WebsiteCloudFront:
         Type: AWS::CloudFront::Distribution
+        DependsOn: WebsiteBucket
         Properties:
             DistributionConfig:
                 Comment: CloudFront for Photo Album
