@@ -42,6 +42,8 @@ Resources:
                             -   HEAD
                         Compress: FALSE
                         DefaultTTL: 86400
+                        ForwardedValues:
+                            QueryString: FALSE
                         MaxTTL: 31536000
                         MinTTL: 0
                         PathPattern: '*'
