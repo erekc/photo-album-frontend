@@ -64,7 +64,6 @@ Resources:
                         QueryString: FALSE
                     MaxTTL: 31536000
                     MinTTL: 0
-                    PathPattern: '*'
                     SmoothStreaming: FALSE
                     TargetOriginId: S3-ai-photo-album2.com
                     ViewerProtocolPolicy: redirect-to-https
