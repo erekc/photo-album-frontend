@@ -74,7 +74,9 @@ Resources:
                 Origins:
                     -   DomainName: ai-photo-album2.com.s3.amazonaws.com
                         Id: S3-ai-photo-album2.com
-                        CustomOriginConfig:
-                            OriginProtocolPolicy: http-only
+                        S3OriginConfig:
+                            OriginAccessIdentity: ''
+                        # CustomOriginConfig:
+                        #     OriginProtocolPolicy: http-only
                 ViewerCertificate:
                     CloudFrontDefaultCertificate: TRUE
