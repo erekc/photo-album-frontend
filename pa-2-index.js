@@ -297,7 +297,8 @@ function getQueries(){
     	}
   	}
   	
+  	console.log(gridMeat);
   	var grid = gridBegin + gridMeat + gridEnd;
   	$("#album-section").html(grid);
-	}, 2000);
+	}, 5000);
 }
