@@ -264,41 +264,75 @@ function getQueries(){
 		.then(function(result){
 			responseBody = result["data"]["body"];
 			console.log(responseBody);
+			var bucketURL = "https://npab2.s3.amazonaws.com/";
+    	var gridBegin = "<div class=\"container\">";
+    	var rowBegin = "<div class=\"row\">";
+    	var rowEnd = "</div>";
+    	var gridEnd = "</div>";
+    	var colBegin = "<div class=\"col\">";
+    	var colEnd = "</div>";
+    	var gridMeat = "";
+    	
+    	if (responseBody != null) {
+      	for (var i = 0; i < responseBody.length; i++){
+      	  var photo = responseBody[i];
+      	  if (i === 0){
+      	    gridMeat += rowBegin;
+      	  }
+      	  else{ 
+      	    if (i % 4 === 0){
+      	      gridMeat += rowEnd;
+      	      if (i != responseBody.length - 1){
+      	        gridMeat += rowBegin;
+      	      }
+      	    }
+      	    var image = "<img src=\"" + bucketURL + photo + "\"style=\"height: 200px; width: 200px;\">";
+      	    gridMeat += colBegin + image + colEnd;
+      	  }
+      	}
+    	}
+    	
+    	console.log(gridMeat);
+    	var grid = gridBegin + gridMeat + gridEnd;
+    	$("#album-section").html(grid);
+    	
 		}).catch(function(result){
 			alert("Oops. Bad response. :(");
 		});
 		
-	setTimeout(function () {
-  	var bucketURL = "https://pa-b2.s3.amazonaws.com/";
-  	var gridBegin = "<div class=\"container\">";
-  	var rowBegin = "<div class=\"row\">";
-  	var rowEnd = "</div>";
-  	var gridEnd = "</div>";
-  	var colBegin = "<div class=\"col\">";
-  	var colEnd = "</div>";
-  	var gridMeat = "";
+// 	setTimeout(function () {
+//   	var bucketURL = "https://pa-b2.s3.amazonaws.com/";
+//   	var gridBegin = "<div class=\"container\">";
+//   	var rowBegin = "<div class=\"row\">";
+//   	var rowEnd = "</div>";
+//   	var gridEnd = "</div>";
+//   	var colBegin = "<div class=\"col\">";
+//   	var colEnd = "</div>";
+//   	var gridMeat = "";
   	
-  	if (responseBody != null) {
-    	for (var i = 0; i < responseBody.length; i++){
-    	  var photo = responseBody[i];
-    	  if (i === 0){
-    	    gridMeat += rowBegin;
-    	  }
-    	  else{ 
-    	    if (i % 4 === 0){
-    	      gridMeat += rowEnd;
-    	      if (i != responseBody.length - 1){
-    	        gridMeat += rowBegin;
-    	      }
-    	    }
-    	    var image = "<img src=\"" + bucketURL + photo + "\"style=\"height: 200px; width: 200px;\">";
-    	    gridMeat += colBegin + image + colEnd;
-    	  }
-    	}
-  	}
+//   	if (responseBody != null) {
+//     	for (var i = 0; i < responseBody.length; i++){
+//     	  var photo = responseBody[i];
+//     	  if (i === 0){
+//     	    gridMeat += rowBegin;
+//     	  }
+//     	  else{ 
+//     	    if (i % 4 === 0){
+//     	      gridMeat += rowEnd;
+//     	      if (i != responseBody.length - 1){
+//     	        gridMeat += rowBegin;
+//     	      }
+//     	    }
+//     	    var image = "<img src=\"" + bucketURL + photo + "\"style=\"height: 200px; width: 200px;\">";
+//     	    gridMeat += colBegin + image + colEnd;
+//     	  }
+//     	}
+//   	}
   	
-  	console.log(gridMeat);
-  	var grid = gridBegin + gridMeat + gridEnd;
-  	$("#album-section").html(grid);
-	}, 5000);
+//   	console.log(gridMeat);
+//   	var grid = gridBegin + gridMeat + gridEnd;
+//   	$("#album-section").html(grid);
+// 	}, 5000);
+
+  
 }
