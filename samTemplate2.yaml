@@ -51,6 +51,23 @@ Resources:
                         SmoothStreaming: FALSE
                         TargetOriginId: S3-ai-photo-album2.com
                         ViewerProtocolPolicy: redirect-to-https
+                DefaultCacheBehavior:
+                    AllowedMethods:
+                        -   GET
+                        -   HEAD
+                    CachedMethods:
+                        -   GET
+                        -   HEAD
+                    Compress: FALSE
+                    DefaultTTL: 86400
+                    ForwardedValues:
+                        QueryString: FALSE
+                    MaxTTL: 31536000
+                    MinTTL: 0
+                    PathPattern: '*'
+                    SmoothStreaming: FALSE
+                    TargetOriginId: S3-ai-photo-album2.com
+                    ViewerProtocolPolicy: redirect-to-https
                 DefaultRootObject: pa-2-index.html
                 Enabled: TRUE
                 HttpVersion: http2
