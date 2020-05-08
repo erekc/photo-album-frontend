@@ -1,4 +1,4 @@
-var albumBucketName = "pa-b2";
+var albumBucketName = "npab2";
 var bucketRegion = "us-east-1";
 var IdentityPoolId = "us-east-1:ba24ab52-3500-49e8-beb1-bfc81af16f7b";
 var identityPoolCred = new AWS.CognitoIdentityCredentials({
