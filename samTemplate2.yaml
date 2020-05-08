@@ -5,7 +5,7 @@ Resources:
     WebsiteBucket:
         Type: AWS::S3::Bucket
         Properties:
-            Bucketname: ai-photo-album2.com
+            BucketName: ai-photo-album2.com
             PublicAccessBlockConfiguration:
                 BlockPublicAcls: FALSE
                 BlockPublicPolicy: FALSE
