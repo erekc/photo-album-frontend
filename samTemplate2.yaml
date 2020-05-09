@@ -76,7 +76,5 @@ Resources:
                         Id: S3-ai-photo-album2.com
                         S3OriginConfig:
                             OriginAccessIdentity: ''
-                        # CustomOriginConfig:
-                        #     OriginProtocolPolicy: http-only
                 ViewerCertificate:
                     CloudFrontDefaultCertificate: TRUE
